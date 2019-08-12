@@ -1,6 +1,6 @@
 var stats = new Stats();
-stats.showPanel(0);
-document.body.appendChild(stats.dom);
+//stats.showPanel(0);
+//document.body.appendChild(stats.dom);
 /**
  * A jQuery plugin that generates an interactive starfield inside a canvas element.
  *
@@ -61,12 +61,10 @@ document.body.appendChild(stats.dom);
 			starColor:	"rgba(255,255,255,1)", 
 			bgColor:	"rgba(0,0,0,1)",
 			mouseMove:	true,
-			mouseColor:	"rgba(0,0,0,0.2)",
-			mouseSpeed:	20,
 			fps:		15,
-			speed:		3,
-			quantity:	512,
-			ratio:		256,
+			speed:		2,
+			quantity:	2000,
+			ratio:		128,
 			divclass:	"starfield"
 		},
 
@@ -349,9 +347,9 @@ document.body.appendChild(stats.dom);
 			window.addEventListener('orientationchange', function(){that.resizer()}, false);
 
 			// Move stars on mouse move
-			if (this.settings.mouseMove) {
-				this.move();
-			}
+			// if (this.settings.mouseMove) {
+			// 	this.move();
+			// }
 
 			return this;
 		}
