@@ -1,1 +1,21 @@
-.starfield { height:100%; left:0; position:absolute; top:0; width:100%; z-index:0;}
+.starfield { 
+    height:100%; 
+    left:0; 
+    position:absolute; 
+    top:0; 
+    width:100%; 
+    z-index:1;
+    opacity: 1;
+}
+
+ .backdrop{
+    height:100%; 
+    left:0; 
+    position:absolute; 
+    top:0; 
+    width:100%; 
+    z-index:0;
+    background-image: url('images/starfield-background-web.png');
+    background-size: 100% 100%;
+} 
+

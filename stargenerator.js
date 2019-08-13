@@ -59,11 +59,11 @@ var stats = new Stats();
 		// Default settings
 		defaults: {
 			starColor:	"rgba(255,255,255,1)", 
-			bgColor:	"rgba(0,0,0,1)",
+			//bgColor:	"rgba(0,0,0,.05)",
 			mouseMove:	true,
 			fps:		15,
-			speed:		2,
-			quantity:	2000,
+			speed:		1,
+			quantity:	5000,
 			ratio:		128,
 			divclass:	"starfield"
 		},
@@ -98,7 +98,7 @@ var stats = new Stats();
 				this.star[i][4] = this.y + (this.star[i][1] / this.star[i][2]) * this.star_ratio;
 			}
 
-			that.context.fillStyle		= that.settings.bgColor;
+			//that.context.fillStyle		= that.settings.bgColor;
 			this.context.strokeStyle	= this.settings.starColor;
 		},
 
@@ -205,7 +205,7 @@ var stats = new Stats();
 					}
 
 					// Set the colors
-					that.context.fillStyle		= that.settings.bgColor;
+					//that.context.fillStyle		= that.settings.bgColor;
 					that.context.strokeStyle	= that.settings.starColor;
 				} else {
 					return;
@@ -286,41 +286,37 @@ var stats = new Stats();
 			animId = window.requestAnimationFrame(function(){that.loop()});
 		},
 
-		move: function(){
-			var doc	= document.documentElement;
+		// move: function(){
+		// 	var doc	= document.documentElement;
 
-			if (this.orientationSupport && !this.desktop) {
-				//$('<p class="output"></p>').prependTo('.content');
-				//var output = document.querySelector('.output');
-				window.addEventListener('deviceorientation', handleOrientation, false);
-			} else {
-				window.addEventListener('mousemove', handleMousemove, false);
-			}
+		// 	if (this.orientationSupport && !this.desktop) {
+		// 		$('<p class="output"></p>').prependTo('.content');
+		// 		var output = document.querySelector('.output');
+		// 		window.addEventListener('deviceorientation', handleOrientation, false);
+		// 	} else {
+		// 		window.addEventListener('mousemove', handleMousemove, false);
+		// 	}
 
-			function handleOrientation(event) {
-				if( event.beta !== null && event.gamma !== null) {
-					var x = event.gamma, y = event.beta;
+			// function handleOrientation(event) {
+			// 	if( event.beta !== null && event.gamma !== null) {
+			// 		var x = event.gamma, y = event.beta;
 
-					if (!that.portrait) {
-						x = event.beta * -1;
-						y = event.gamma;
-					}
+			// 		if (!that.portrait) {
+			// 			x = event.beta * -1;
+			// 			y = event.gamma;
+			// 		}
 
-					that.cursor_x	= (that.w / 2) + (x * 5);
-					that.cursor_y	= (that.h / 2) + (y * 5);
+			// 		that.cursor_x	= (that.w / 2) + (x * 5);
+			// 		that.cursor_y	= (that.h / 2) + (y * 5);
 
-					/*var output = document.querySelector('.output');
-					output.innerHTML = "rotZ : " + Math.round(event.alpha) + "<br />\n";
-					output.innerHTML += "rotX: " + Math.round(event.beta) + "<br />\n";
-					output.innerHTML += "rotY: " + Math.round(event.gamma) + "<br />\n";*/
-				}
-			}
+			// 		/*var output = document.querySelector('.output');
+			// 		output.innerHTML = "rotZ : " + Math.round(event.alpha) + "<br />\n";
+			// 		output.innerHTML += "rotX: " + Math.round(event.beta) + "<br />\n";
+			// 		output.innerHTML += "rotY: " + Math.round(event.gamma) + "<br />\n";*/
+			// 	}
+			// }
 
-			function handleMousemove(event) {
-				that.cursor_x	= event.pageX || event.clientX + doc.scrollLeft - doc.clientLeft;
-				that.cursor_y	= event.pageY || event.clientY + doc.scrollTop - doc.clientTop;
-			}
-		},
+		//},
 
 		stop: function(){
 			window.cancelAnimationFrame(animId);
@@ -345,11 +341,6 @@ var stats = new Stats();
 			window.addEventListener('resize', function(){that.resizer()}, false);
 
 			window.addEventListener('orientationchange', function(){that.resizer()}, false);
-
-			// Move stars on mouse move
-			// if (this.settings.mouseMove) {
-			// 	this.move();
-			// }
 
 			return this;
 		}
